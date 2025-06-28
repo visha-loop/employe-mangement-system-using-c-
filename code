@@ -31,3 +31,36 @@ class visitingEmp : public Employee{
 		int numberOfDays;
 		float dailyWages;
 	public:
+    //@Override
+		void inputInfo(){
+			cout<<"Enter Daily Wages :";
+			cin>>dailyWages;
+			cout<<"Enter Number of Days :";
+			cin>>numberOfDays;
+		}
+		//@Override
+		void calculateSalary() const{
+			float salary = dailyWages*numberOfDays;
+			cout<<"Salary :"<<salary<<endl;
+		}
+};
+//darived Class Parmanet Employee 
+class ParmanentEmp : public Employee{
+	private:
+		int monthlySalary;
+	public:
+		void inputInfo(){
+			cout<<"Enter Monthly Salary :";
+			cin>>monthlySalary;
+			}
+		void calculateSalary() const{
+			cout<<"Salary :"<<monthlySalary<<" Per Month"<<endl;
+		}
+		
+};
+main(){
+	Employee *Emp;
+	int choice;
+	do{
+		cout<<"-------- Main Menu ----------\n";
+		cout<<"1. Create Visiting Employee \n";
