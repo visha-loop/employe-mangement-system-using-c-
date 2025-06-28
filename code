@@ -64,3 +64,34 @@ main(){
 	do{
 		cout<<"-------- Main Menu ----------\n";
 		cout<<"1. Create Visiting Employee \n";
+cout<<"1. Create Visiting Employee \n";
+		cout<<"2. Create Parmanent Employee \n";
+		cout<<"0. Exit \n";
+		cout<<"Enter Your Choice :";
+		cin>>choice;
+		switch(choice){
+			case 1:
+				Emp = new visitingEmp();
+				break;
+			case 2:
+				Emp = new ParmanentEmp();
+				break;
+			case 0:
+				cout<<"Exiting The Program \n";
+				break;
+			default:
+				cout<<"Invalid Number : Plz Enter Valid Number \n";
+				continue;				
+		}
+		if(choice != 0){
+			Emp->InputBasicInfo();
+			Emp->inputInfo();
+			cout<<"\nEmployee Information\n";
+			Emp->DisplayBasicInfo();
+			Emp->calculateSalary();
+			
+			delete Emp;
+		}
+	}while(choice!=0);	
+	
+}
