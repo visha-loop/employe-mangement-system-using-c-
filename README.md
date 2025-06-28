@@ -1,96 +1,100 @@
-//code of employe management system through c++ ( it is an example code which has beeen taken from online resources 
-#include<iostream>
-#include<string>
-using namespace std;
-//abstract Class
-class Employee{
-	protected:
-		int empId;
-		string name;
-	public:
-		//concrete method
-		void InputBasicInfo(){
-			cout<<"Enter Employee ID :";
-			cin>>empId;
-			cout<<"Enter Employee Name :";
-			cin.ignore();
-			getline(cin,name);
-		}
-		void DisplayBasicInfo()const{
-			cout<<"---------- Basic Information -------------"<<endl;
-			cout<<"Employee ID :"<<empId<<endl;
-			cout<<"Employee Name :"<<name<<endl;
-		}
-		//Pure Virtual Function
-		virtual void inputInfo() = 0;
-		virtual void calculateSalary() const= 0;
-};
-//dirived Class Visiting Employee 
-class visitingEmp : public Employee{
-	private:
-		int numberOfDays;
-		float dailyWages;
-	public:
-		//@Override
-		void inputInfo(){
-			cout<<"Enter Daily Wages :";
-			cin>>dailyWages;
-			cout<<"Enter Number of Days :";
-			cin>>numberOfDays;
-		}
-		//@Override
-		void calculateSalary() const{
-			float salary = dailyWages*numberOfDays;
-			cout<<"Salary :"<<salary<<endl;
-		}
-};
-//darived Class Parmanet Employee 
-class ParmanentEmp : public Employee{
-	private:
-		int monthlySalary;
-	public:
-		void inputInfo(){
-			cout<<"Enter Monthly Salary :";
-			cin>>monthlySalary;
-			}
-		void calculateSalary() const{
-			cout<<"Salary :"<<monthlySalary<<" Per Month"<<endl;
-		}
-		
-};
-main(){
-	Employee *Emp;
-	int choice;
-	do{
-		cout<<"-------- Main Menu ----------\n";
-		cout<<"1. Create Visiting Employee \n";
-		cout<<"2. Create Parmanent Employee \n";
-		cout<<"0. Exit \n";
-		cout<<"Enter Your Choice :";
-		cin>>choice;
-		switch(choice){
-			case 1:
-				Emp = new visitingEmp();
-				break;
-			case 2:
-				Emp = new ParmanentEmp();
-				break;
-			case 0:
-				cout<<"Exiting The Program \n";
-				break;
-			default:
-				cout<<"Invalid Number : Plz Enter Valid Number \n";
-				continue;				
-		}
-		if(choice != 0){
-			Emp->InputBasicInfo();
-			Emp->inputInfo();
-			cout<<"\nEmployee Information\n";
-			Emp->DisplayBasicInfo();
-			Emp->calculateSalary();
-			
-			delete Emp;
-		}
-	}while(choice!=0);	
-	
-}
+📘 Employee Management System in C++
+📌 Description
+The Employee Management System is a console-based application developed in C++ that allows users to manage employee records efficiently. It supports basic operations like adding, displaying, updating, searching, and deleting employee details. This project demonstrates the use of object-oriented programming (OOP) principles in C++, such as classes, objects, and file handling.
+
+🛠️ Features
+Add new employee records
+
+Display all employees
+
+Search employee by ID
+
+Update employee details
+
+Delete employee records
+
+Store data using file handling (optional for persistence)
+
+🧱 Technologies Used
+Language: C++
+
+Paradigm: Object-Oriented Programming
+
+Compiler: Any standard C++ compiler (e.g., GCC, MinGW, Turbo C++)
+
+Platform: Console/Terminal
+
+📂 File Structure
+bash
+Copy
+Edit
+EmployeeManagementSystem/
+│
+├── main.cpp              # Main source code file
+├── employees.dat         # (Optional) Binary file for storing records(optional
+└── README.txt            # This file
+▶️ How to Run
+Clone or Download the project files.
+
+Open the project in your C++ IDE or editor.
+
+Compile main.cpp:
+
+bash
+Copy
+Edit
+g++ main.cpp -o EmployeeManagementSystem
+Run the executable:
+
+bash
+Copy
+Edit
+./EmployeeManagementSystem
+👤 Employee Data Fields
+Typical employee records include:
+
+Employee ID
+
+Name
+
+Age
+
+Department
+
+Salary
+
+You can customize this as per your project needs.
+
+📌 Sample Menu (Console)
+markdown
+Copy
+Edit
+========= Employee Management System =========
+1. Add Employee
+2. Display All Employees
+3. Search Employee by ID
+4. Update Employee
+5. Delete Employee
+6. Exit
+=============================================
+Enter your choice: _
+📋 Notes
+Make sure your compiler supports C++11 or later.
+
+If you use file storage, ensure the file permissions are set correctly.
+
+This is a basic version for learning purposes and does not include advanced features like authentication or GUIs.
+
+📚 Learning Outcomes
+File handling (fstream)
+
+Classes and Objects
+
+Data encapsulation
+
+Menu-driven programs in C++
+
+Real-world project simulation
+
+👨‍💻 Author
+vishal
